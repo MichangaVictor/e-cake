@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "JJheGbVkN+IF+I8r11SJ4ACOouu73MlPMrptocDa9AXCOrV10YLJrPUUz+jTOYrM88otUoEmgBAZd62x9tg86w==",
+  "dgSpecHash": "chsc5IxMFkipDFA219T1x5BUJWmkbJ64LtwRp3xs+S5zTuOsiBO2gskpZnAT0cxpqxV83Y2fTSdJ99G2RYi44Q==",
   "success": true,
   "projectFilePath": "E:\\Active-work\\BethanysPieShop\\BethanysPieShop\\BethanysPieShop\\BethanysPieShop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Stacy\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Stacy\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\5.0.10\\microsoft.aspnetcore.authentication.google.5.0.10.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.10\\microsoft.aspnetcore.cryptography.internal.5.0.10.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.10\\microsoft.aspnetcore.cryptography.keyderivation.5.0.10.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

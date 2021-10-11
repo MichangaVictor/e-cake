@@ -26,8 +26,15 @@ using BethanysPieShop.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e21201ba89747e82437fd5c86c5a254d2ce200f2", @"/Views/Order/CheckoutComplete.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"009ac11839d30d0a058ba05175bd20fd0b79723d", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"61d9b1ce7b3d97acb408ce5407adbd899dd8d88e", @"/Views/_ViewImports.cshtml")]
     public class Views_Order_CheckoutComplete : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

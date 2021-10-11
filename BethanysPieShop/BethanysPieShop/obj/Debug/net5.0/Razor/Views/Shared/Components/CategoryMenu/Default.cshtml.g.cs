@@ -26,8 +26,15 @@ using BethanysPieShop.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d6a4455a22fe12e6d72302a9c43349bf28e2db6c", @"/Views/Shared/Components/CategoryMenu/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"009ac11839d30d0a058ba05175bd20fd0b79723d", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"61d9b1ce7b3d97acb408ce5407adbd899dd8d88e", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_CategoryMenu_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Category>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Pie", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -61,7 +68,7 @@ using BethanysPieShop.ViewModels;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("\r\n<li class=\"dropdown\">\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d6a4455a22fe12e6d72302a9c43349bf28e2db6c5207", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d6a4455a22fe12e6d72302a9c43349bf28e2db6c5414", async() => {
                 WriteLiteral("Pies<b class=\"caret\"></b>");
             }
             );
@@ -90,7 +97,7 @@ using BethanysPieShop.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("            <li>\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d6a4455a22fe12e6d72302a9c43349bf28e2db6c7106", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d6a4455a22fe12e6d72302a9c43349bf28e2db6c7313", async() => {
 #nullable restore
 #line 12 "E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\Views\Shared\Components\CategoryMenu\Default.cshtml"
                                                           Write(category.CategoryName);
@@ -137,7 +144,7 @@ using BethanysPieShop.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("        <li class=\"divider\"></li>\r\n        <li>\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d6a4455a22fe12e6d72302a9c43349bf28e2db6c10092", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d6a4455a22fe12e6d72302a9c43349bf28e2db6c10299", async() => {
                 WriteLiteral("View all pies");
             }
             );

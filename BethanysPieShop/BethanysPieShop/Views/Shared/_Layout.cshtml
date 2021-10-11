@@ -1,5 +1,17 @@
-﻿<!DOCTYPE html>
+﻿
+@using System.Security.Claims
+@using System.Threading.Tasks
+@using BethanysPieShop.Auth
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
 
+@inject SignInManager<ApplicationUser> SignInManager
+@inject IAuthorizationService AuthorizationService
+@inject UserManager<ApplicationUser> UserManager
+@*@inject SignInManager<IdentityUser> _signInManager;*@
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -28,9 +40,13 @@
                     @await Component.InvokeAsync("CategoryMenu")
                     <li><a asp-controller="Contact" asp-action="Index">Contact</a></li>
                     @await Component.InvokeAsync("ShoppingCartSummary")
-                    <partial name="_LoginPartial" />
-
+                    @if (SignInManager.IsSignedIn(User))// && User.IsInRole("Administrator"))
+                    {
+                        @await Component.InvokeAsync("AdminMenu")
+                    }
                 </ul>
+                @await Html.PartialAsync("LoginPartial")
+
             </div>
         </div>
     </nav>

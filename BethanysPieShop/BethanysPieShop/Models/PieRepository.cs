@@ -9,12 +9,13 @@ namespace BethanysPieShop.Models
     public class PieRepository:IPieRepository
     {
         private readonly AppDbContext _appDbContext;
+
         public PieRepository(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }
 
-        public IEnumerable<Pie> AllPies
+        public IEnumerable<Pie> Pies
         {
             get
             {
@@ -32,7 +33,19 @@ namespace BethanysPieShop.Models
 
         public Pie GetPieById(int pieId)
         {
-            return _appDbContext.Pies.FirstOrDefault(p => p.PieId == pieId);
+            return _appDbContext.Pies.Include(p => p.PieReviews).FirstOrDefault(p => p.PieId == pieId);
+        }
+
+        public void UpdatePie(Pie pie)
+        {
+            _appDbContext.Pies.Update(pie);
+            _appDbContext.SaveChanges();
+        }
+
+        public void CreatePie(Pie pie)
+        {
+            _appDbContext.Pies.Add(pie);
+            _appDbContext.SaveChanges();
         }
     }
 }

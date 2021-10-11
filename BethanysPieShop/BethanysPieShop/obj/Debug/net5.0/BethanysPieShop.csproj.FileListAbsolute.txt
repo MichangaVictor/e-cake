@@ -172,3 +172,9 @@ E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\obj\Debug\net5.0\
 E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\obj\Debug\net5.0\Razor\Views\Account\login.cshtml.g.cs
+E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
+E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\obj\Debug\net5.0\Razor\Views\Admin\AddUser.cshtml.g.cs
+E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\obj\Debug\net5.0\Razor\Views\Admin\EditUser.cshtml.g.cs
+E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\obj\Debug\net5.0\Razor\Views\Admin\UserManagement.cshtml.g.cs
+E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\obj\Debug\net5.0\Razor\Views\Shared\AdminMenu\Default.cshtml.g.cs
