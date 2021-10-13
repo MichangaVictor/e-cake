@@ -5,11 +5,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +49,24 @@ namespace BethanysPieShop
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            services.AddTransient<IPieReviewRepository, PieReviewRepository>();
+
             //services.AddHttpContextAccessor();
+
+            services.AddAntiforgery();
+            //services.AddMvc(options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
+            
+            //services.AddMvc();
+            //global filter
+            //services.AddMvc
+            //    (
+            //        config => { config.Filters.AddService(typeof(TimerAction)); }
+            //    )
+            //    .AddViewLocalization(
+            //        LanguageViewLocationExpanderFormat.Suffix,
+            //        opts => { opts.ResourcesPath = "Resources"; })
+            //    .AddDataAnnotationsLocalization();
+            services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
 
             services.AddMvc();
             //Claims-based
@@ -69,34 +88,57 @@ namespace BethanysPieShop
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            //middle ware
-            app.UseDeveloperExceptionPage();
-            app.UseStatusCodePages();
+
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
-            //app.UseIdentity();
 
-            app.UseGoogleAuthentication(new GoogleOptions
+            app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            //app.UseGoogleAuthentication(new GoogleOptions
+            //{
+            //    ClientId = "888527057729-951v5feb1hjjg1c07fbgi09g7213p1f1.apps.googleusercontent.com",
+            //    ClientSecret = "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"
+            //});
+
+
+            app.UseRequestLocalization(app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>().Value);
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            //    endpoints.MapRazorPages();
+            //});
+
+            app.UseMvc(routes =>
             {
-                ClientId = "888527057729-951v5feb1hjjg1c07fbgi09g7213p1f1.apps.googleusercontent.com",
-                ClientSecret = "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"
+
+                //areas
+                routes.MapRoute(
+                    name: "areas",
+                    template: "{area:exists}/{controller=Home}/{action=Index}");
+
+                routes.MapRoute(
+                  name: "categoryfilter",
+                  template: "Pie/{action}/{category?}",
+                  defaults: new { Controller = "Pie", action = "List" });
+
+                routes.MapRoute(
+                name: "default",
+                template: "{controller=Home}/{action=Index}/{id?}");
+
+
             });
-
-            app.UseEndpoints(endpoints =>
-            {               
-
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
-            });
-
         }
     }
 }

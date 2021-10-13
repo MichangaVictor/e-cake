@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace BethanysPieShop.Controllers
 {
-    [Authorize]
-    public class OrderController : Controller
+    public class OrderController: Controller
     {
-
         private readonly IOrderRepository _orderRepository;
         private readonly ShoppingCart _shoppingCart;
 
@@ -21,10 +19,12 @@ namespace BethanysPieShop.Controllers
             _shoppingCart = shoppingCart;
         }
 
+        [Authorize]
         public IActionResult Checkout()
         {
             return View();
         }
+
         [HttpPost]
         [Authorize]
         [Authorize(Policy = "MinimumOrderAge")]
@@ -45,10 +45,13 @@ namespace BethanysPieShop.Controllers
                 return RedirectToAction("CheckoutComplete");
             }
             return View(order);
+
         }
+
         public IActionResult CheckoutComplete()
         {
-            ViewBag.CheckoutCompleteMessage = "Thanks for your order. You'll soon enjoy our delicious pies!";
+            ViewBag.CheckoutCompleteMessage = HttpContext.User.Identity.Name +
+                                      ", thanks for your order. You'll soon enjoy our delicious pies!";
             return View();
         }
     }

@@ -13,7 +13,7 @@ namespace BethanysPieShop.Models
         [BindNever]
         public int OrderId { get; set; }
 
-        public List<OrderDetail> OrderDetails { get; set; }
+        public List<OrderDetail> OrderLines { get; set; }
 
         [Required(ErrorMessage = "Please enter your first name")]
         [Display(Name = "First name")]
@@ -68,5 +68,6 @@ namespace BethanysPieShop.Models
         [BindNever]
         [ScaffoldColumn(false)]
         public DateTime OrderPlaced { get; set; }
+        //public object OrderDetails { get; internal set; }
     }
 }

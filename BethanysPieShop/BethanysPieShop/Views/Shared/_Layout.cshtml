@@ -1,4 +1,5 @@
-﻿
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+
 @using System.Security.Claims
 @using System.Threading.Tasks
 @using BethanysPieShop.Auth
@@ -10,17 +11,33 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject IAuthorizationService AuthorizationService
 @inject UserManager<ApplicationUser> UserManager
-@*@inject SignInManager<IdentityUser> _signInManager;*@
+
 <!DOCTYPE html>
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <script src="~/lib/jquery/jquery.js"></script>
-    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    @*<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />*@
+
+    <title>@ViewBag.PageTitle</title>
+
+    <link rel="stylesheet" href="//ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+          asp-fallback-href="lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-fallback-test-class="hidden"
+          asp-fallback-test-property="visibility"
+          asp-fallback-test-value="hidden" />
+
     <link href="~/Content/site.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script asp-src-include="lib/jquery/dist/jquery.js"></script>
+    <script asp-src-include="lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script asp-src-include="lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script asp-src-include="Scripts/**/*.js"
+            asp-src-exclude="Scripts/TempScripts/*.js"></script>
+
+    <title>Bethany's Pie Shop</title>
+    @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
 
@@ -37,16 +54,34 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                    @await Component.InvokeAsync("CategoryMenu")
-                    <li><a asp-controller="Contact" asp-action="Index">Contact</a></li>
+                    
+                    <cache expires-sliding="@TimeSpan.FromSeconds(10)">
+                        @await Component.InvokeAsync("CategoryMenu")
+                    </cache>
+
+                    <li condition="SignInManager.IsSignedIn(User)"><a asp-controller="PieGift" asp-action="Index">Send a pie</a></li>
+
+                    <li><a asp-controller="Contact" asp-action="Index">Contact us</a></li>
+                    <li><a asp-controller="Home" asp-action="Index" asp-area="Promo">Promotions</a></li>
                     @await Component.InvokeAsync("ShoppingCartSummary")
-                    @if (SignInManager.IsSignedIn(User))// && User.IsInRole("Administrator"))
+
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Administrators"))
                     {
                         @await Component.InvokeAsync("AdminMenu")
+
+                        <li class="dropdown">
+                            <a asp-controller="PieManagement"
+                               asp-action="Index">Pie Management</a>
+                        </li>
                     }
+                    <li>
+                        <a asp-controller="Pie" asp-action="Details" asp-route-id="30"
+                           asp-protocol="http" asp-host="www.bethanyspieshop.com" asp-fragment="details">
+                            Pie of the week
+                        </a>
+                    </li>
                 </ul>
                 @await Html.PartialAsync("LoginPartial")
-
             </div>
         </div>
     </nav>
@@ -55,14 +90,27 @@
         <div class="row">
             <div class="col-md-3">
                 <p class="lead">
-                    <img class="img-responsive" alt="Bethany's Pie Shop'" src="~/Images/bethanylogo.png" />
+                    <img class="img-responsive" alt="Bethany's Pie Shop'" src="~/Images/bethanylogo.png"  />
                 </p>
             </div>
             <div class="col-md-9">
                 @RenderBody()
             </div>
+            @await Component.InvokeAsync("SystemStatusPage")
+            @await Html.PartialAsync("LanguageSelection")
         </div>
     </div>
-    @RenderSection("Scripts", required: false)
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/Content/site.css" />
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/Content/site.min.css" />
+        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    </environment>
+
+    @RenderSection("scripts", required: false)
+
 </body>
 </html>

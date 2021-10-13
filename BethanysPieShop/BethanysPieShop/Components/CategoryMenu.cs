@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BethanysPieShop.Components
 {
-    public class CategoryMenu:ViewComponent
+    public class CategoryMenu : ViewComponent
     {
         private readonly ICategoryRepository _categoryRepository;
         public CategoryMenu(ICategoryRepository categoryRepository)
@@ -17,7 +17,7 @@ namespace BethanysPieShop.Components
 
         public IViewComponentResult Invoke()
         {
-            var categories = _categoryRepository.AllCategories.OrderBy(c => c.CategoryName);
+            var categories = _categoryRepository.Categories.OrderBy(c => c.CategoryName);
             return View(categories);
         }
     }

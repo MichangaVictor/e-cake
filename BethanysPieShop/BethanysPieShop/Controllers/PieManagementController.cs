@@ -1,18 +1,17 @@
-﻿using BethanysPieShop.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using BethanysPieShop.Models;
 using BethanysPieShop.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BethanysPieShop.Controllers
 {
     [Authorize(Roles = "Administrators")]
     [Authorize(Policy = "DeletePie")]
-    public class PieManagementController : Controller
+    public class PieManagementController: Controller
     {
         private readonly IPieRepository _pieRepository;
         private readonly ICategoryRepository _categoryRepository;
@@ -44,15 +43,32 @@ namespace BethanysPieShop.Controllers
         public IActionResult AddPie(PieEditViewModel pieEditViewModel)
         {
             //Basic validation
+            //if (ModelState.IsValid)
+            //{
+            //    _pieRepository.CreatePie(pieEditViewModel.Pie);
+            //    return RedirectToAction("Index");
+            //}
+
+            //custom validation rules
+            if (ModelState.GetValidationState("Pie.Price") == ModelValidationState.Valid
+                || pieEditViewModel.Pie.Price < 0)
+                ModelState.AddModelError(nameof(pieEditViewModel.Pie.Price), "The price of the pie should be higher than 0");
+
+            if (pieEditViewModel.Pie.IsPieOfTheWeek && !pieEditViewModel.Pie.InStock)
+                ModelState.AddModelError(nameof(pieEditViewModel.Pie.IsPieOfTheWeek), "Only pies that are in stock should be Pie of the Week");
+
             if (ModelState.IsValid)
             {
                 _pieRepository.CreatePie(pieEditViewModel.Pie);
                 return RedirectToAction("Index");
             }
+
             return View(pieEditViewModel);
         }
 
-        public IActionResult EditPie(int pieId)
+        //public IActionResult EditPie([FromRoute]int pieId)
+        //public IActionResult EditPie([FromQuery]int pieId, [FromHeader] string accept)
+        public IActionResult EditPie([FromQuery]int pieId, [FromHeader(Name = "Accept-Language")] string accept)
         {
             var categories = _categoryRepository.Categories;
 
@@ -72,10 +88,11 @@ namespace BethanysPieShop.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditPie([Bind("Pie")] PieEditViewModel pieEditViewModel)
-        //public IActionResult EditPie(PieEditViewModel pieEditViewModel)
+        //public IActionResult EditPie([Bind("Pie")] PieEditViewModel pieEditViewModel)
+        public IActionResult EditPie(PieEditViewModel pieEditViewModel)
         {
             pieEditViewModel.Pie.CategoryId = pieEditViewModel.CategoryId;
+
             if (ModelState.IsValid)
             {
                 _pieRepository.UpdatePie(pieEditViewModel.Pie);
@@ -113,7 +130,14 @@ namespace BethanysPieShop.Controllers
         public IActionResult BulkEditPies(List<Pie> pies)
         {
             //Do awesome things with the pie here
-            return View(pies);
+            return View();
+        }
+
+        [AcceptVerbs("Get", "Post")]
+        public IActionResult CheckIfPieNameAlreadyExists([Bind(Prefix = "Pie.Name")]string name)
+        {
+            var pie = _pieRepository.Pies.FirstOrDefault(p => p.Name == name);
+            return pie == null ? Json(true) : Json("That pie name is already taken");
         }
     }
 }

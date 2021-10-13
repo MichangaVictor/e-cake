@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace BethanysPieShop.ViewModels
 {
@@ -15,5 +13,6 @@ namespace BethanysPieShop.ViewModels
         public string UserId { get; set; }
         public string RoleId { get; set; }
         public List<IdentityUser> Users { get; set; }
+
     }
 }

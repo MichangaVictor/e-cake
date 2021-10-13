@@ -4,6 +4,11 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
+
+/*@font-face {
+    font-family: 'sourcesanspro-regular';
+    src: url('sourcesanspro-regular.ttf') format('truetype');
+}*/
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     background-image: url('/images/pattern.png');
@@ -30,9 +35,9 @@ body {
     overflow: hidden;
 }
 
-.caption h4 {
-    white-space: nowrap;
-}
+    .caption h4 {
+        white-space: nowrap;
+    }
 
 .thumbnail img {
     width: 100%;
@@ -47,10 +52,10 @@ body {
     padding: 0;
 }
 
-.thumbnail .caption-full {
-    padding: 9px;
-    color: #333;
-}
+    .thumbnail .caption-full {
+        padding: 9px;
+        color: #333;
+    }
 
 footer {
     margin: 50px 0;
@@ -79,7 +84,7 @@ footer {
 }
 
 .carousel .item {
-    height: 400px;
+  height: 400px;
 }
 
 .item img {
@@ -91,12 +96,12 @@ footer {
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
 
-    background-color: #fcaeae !important;
-    border-color: #fba1a1 !important;
-}
+  background-color: #fcaeae !important;
+  border-color: #fba1a1 !important;
+ }
 
 .btn
 {
-    background-color: #fcaeae !important;
-    border-color: #fba1a1 !important;
+  background-color: #fcaeae !important;
+  border-color: #fba1a1 !important;
 }

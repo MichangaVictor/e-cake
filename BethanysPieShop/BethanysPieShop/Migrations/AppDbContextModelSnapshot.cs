@@ -234,20 +234,92 @@ namespace BethanysPieShop.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<string>("Notes")
-                        .HasColumnType("text");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
                     b.Property<string>("ShortDescription")
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<int>("SugarLevel")
+                        .HasColumnType("integer");
 
                     b.HasKey("PieId");
 
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Pies");
+                });
+
+            modelBuilder.Entity("BethanysPieShop.Models.PieGiftOrder", b =>
+                {
+                    b.Property<int>("PieGiftOrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<int?>("PieId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("PieGiftOrderId");
+
+                    b.HasIndex("PieId");
+
+                    b.ToTable("PieGiftOrders");
+                });
+
+            modelBuilder.Entity("BethanysPieShop.Models.PieReview", b =>
+                {
+                    b.Property<int>("PieReviewId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int?>("PieId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Review")
+                        .HasColumnType("text");
+
+                    b.HasKey("PieReviewId");
+
+                    b.HasIndex("PieId");
+
+                    b.ToTable("PieReviews");
+                });
+
+            modelBuilder.Entity("BethanysPieShop.Models.RecipeInformation", b =>
+                {
+                    b.Property<int>("RecipeInformationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("PieId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("PreparationDirections")
+                        .HasColumnType("text");
+
+                    b.HasKey("RecipeInformationId");
+
+                    b.HasIndex("PieId")
+                        .IsUnique();
+
+                    b.ToTable("RecipeInformation");
                 });
 
             modelBuilder.Entity("BethanysPieShop.Models.ShoppingCartItem", b =>
@@ -433,6 +505,35 @@ namespace BethanysPieShop.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("BethanysPieShop.Models.PieGiftOrder", b =>
+                {
+                    b.HasOne("BethanysPieShop.Models.Pie", "Pie")
+                        .WithMany()
+                        .HasForeignKey("PieId");
+
+                    b.Navigation("Pie");
+                });
+
+            modelBuilder.Entity("BethanysPieShop.Models.PieReview", b =>
+                {
+                    b.HasOne("BethanysPieShop.Models.Pie", "Pie")
+                        .WithMany("PieReviews")
+                        .HasForeignKey("PieId");
+
+                    b.Navigation("Pie");
+                });
+
+            modelBuilder.Entity("BethanysPieShop.Models.RecipeInformation", b =>
+                {
+                    b.HasOne("BethanysPieShop.Models.Pie", "Pie")
+                        .WithOne("RecipeInformation")
+                        .HasForeignKey("BethanysPieShop.Models.RecipeInformation", "PieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pie");
+                });
+
             modelBuilder.Entity("BethanysPieShop.Models.ShoppingCartItem", b =>
                 {
                     b.HasOne("BethanysPieShop.Models.Pie", "Pie")
@@ -501,6 +602,13 @@ namespace BethanysPieShop.Migrations
             modelBuilder.Entity("BethanysPieShop.Models.Order", b =>
                 {
                     b.Navigation("OrderDetails");
+                });
+
+            modelBuilder.Entity("BethanysPieShop.Models.Pie", b =>
+                {
+                    b.Navigation("PieReviews");
+
+                    b.Navigation("RecipeInformation");
                 });
 #pragma warning restore 612, 618
         }

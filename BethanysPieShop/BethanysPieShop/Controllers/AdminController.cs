@@ -334,7 +334,7 @@ namespace BethanysPieShop.Controllers
             IdentityUserClaim<string> claim =
                 new IdentityUserClaim<string> { ClaimType = claimsManagementViewModel.ClaimId, ClaimValue = claimsManagementViewModel.ClaimId };
 
-            user.Claims.Add(claim);
+           // user.Claims.Add(claim);
             var result = await _userManager.UpdateAsync(user);
 
             if (result.Succeeded)
