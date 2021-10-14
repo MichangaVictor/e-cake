@@ -44,7 +44,7 @@ namespace BethanysPieShop.Controllers
             _logger.LogDebug("Loading home page");
             
             //Application Insights
-            TelemetryClient tc = new TelemetryClient();
+            //TelemetryClient tc = new TelemetryClient();
             tc.TrackPageView(new PageViewTelemetry("Insights: Bethany's Home page loaded") { Timestamp = DateTime.UtcNow });
             tc.TrackEvent("HomeControllerLoad");
 

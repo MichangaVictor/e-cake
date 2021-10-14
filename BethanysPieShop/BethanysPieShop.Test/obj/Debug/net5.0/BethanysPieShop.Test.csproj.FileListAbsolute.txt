@@ -1,0 +1,6 @@
+E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop.Test\bin\Debug\net5.0\CoverletSourceRootsMapping
+E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop.Test\obj\Debug\net5.0\BethanysPieShop.Test.csproj.AssemblyReference.cache
+E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop.Test\obj\Debug\net5.0\BethanysPieShop.Test.GeneratedMSBuildEditorConfig.editorconfig
+E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop.Test\obj\Debug\net5.0\BethanysPieShop.Test.AssemblyInfoInputs.cache
+E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop.Test\obj\Debug\net5.0\BethanysPieShop.Test.AssemblyInfo.cs
+E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop.Test\obj\Debug\net5.0\BethanysPieShop.Test.csproj.CoreCompileInputs.cache

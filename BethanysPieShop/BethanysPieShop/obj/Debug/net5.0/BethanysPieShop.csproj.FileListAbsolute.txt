@@ -19,3 +19,4 @@ E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\obj\Debug\net5.0\
 E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\obj\Debug\net5.0\BethanysPieShop.MvcApplicationPartsAssemblyInfo.cache
 E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\obj\Debug\net5.0\BethanysPieShop.RazorAssemblyInfo.cache
 E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\obj\Debug\net5.0\BethanysPieShop.RazorAssemblyInfo.cs
+E:\Active-work\BethanysPieShop\BethanysPieShop\BethanysPieShop\obj\Debug\net5.0\BethanysPieShop.csproj.AssemblyReference.cache

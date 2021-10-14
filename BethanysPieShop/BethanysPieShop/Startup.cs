@@ -55,7 +55,7 @@ namespace BethanysPieShop
 
             services.AddAntiforgery();
             //services.AddMvc(options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
-            
+
             //services.AddMvc();
             //global filter
             //services.AddMvc
@@ -83,12 +83,12 @@ namespace BethanysPieShop
             //services.AddControllersWithViews();
             //services.AddRazorPages();
 
-            
+
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -98,6 +98,10 @@ namespace BethanysPieShop
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
+
+            //logging
+            loggerFactory.AddConsole(LogLevel.Debug);
+            loggerFactory.AddDebug(LogLevel.Debug);
 
             app.UseRouting();
             app.UseAuthentication();
@@ -111,34 +115,16 @@ namespace BethanysPieShop
 
 
             app.UseRequestLocalization(app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>().Value);
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllerRoute(
-            //        name: "default",
-            //        pattern: "{controller=Home}/{action=Index}/{id?}");
-
-            //    endpoints.MapRazorPages();
-            //});
-
-            app.UseMvc(routes =>
+            app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                //areas
-                routes.MapRoute(
-                    name: "areas",
-                    template: "{area:exists}/{controller=Home}/{action=Index}");
-
-                routes.MapRoute(
-                  name: "categoryfilter",
-                  template: "Pie/{action}/{category?}",
-                  defaults: new { Controller = "Pie", action = "List" });
-
-                routes.MapRoute(
-                name: "default",
-                template: "{controller=Home}/{action=Index}/{id?}");
-
-
+                endpoints.MapRazorPages();
             });
+
+
         }
     }
 }
