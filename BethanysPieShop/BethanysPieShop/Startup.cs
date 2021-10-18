@@ -157,7 +157,6 @@ namespace BethanysPieShop
             //Filters
             services.AddScoped<TimerAction>();
             services.AddApplicationInsightsTelemetry();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -213,8 +212,6 @@ namespace BethanysPieShop
             //});
 
             app.UseRequestLocalization(app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>().Value);
-
-
 
             app.UseMvc(routes =>
             {
