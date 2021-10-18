@@ -478,7 +478,7 @@ namespace BethanysPieShop.Migrations
             modelBuilder.Entity("BethanysPieShop.Models.OrderDetail", b =>
                 {
                     b.HasOne("BethanysPieShop.Models.Order", "Order")
-                        .WithMany("OrderDetails")
+                        .WithMany("OrderLines")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -601,7 +601,7 @@ namespace BethanysPieShop.Migrations
 
             modelBuilder.Entity("BethanysPieShop.Models.Order", b =>
                 {
-                    b.Navigation("OrderDetails");
+                    b.Navigation("OrderLines");
                 });
 
             modelBuilder.Entity("BethanysPieShop.Models.Pie", b =>

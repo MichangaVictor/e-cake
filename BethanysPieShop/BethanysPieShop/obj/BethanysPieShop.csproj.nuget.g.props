@@ -26,6 +26,7 @@
     <PkgNoGit Condition=" '$(PkgNoGit)' == '' ">C:\Users\Stacy\.nuget\packages\nogit\0.0.8</PkgNoGit>
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\Stacy\.nuget\packages\microsoft.codeanalysis.analyzers\3.0.0</PkgMicrosoft_CodeAnalysis_Analyzers>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\Stacy\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.10</PkgMicrosoft_EntityFrameworkCore_Tools>
+    <PkgMemuraiDeveloper Condition=" '$(PkgMemuraiDeveloper)' == '' ">C:\Users\Stacy\.nuget\packages\memuraideveloper\2.0.3</PkgMemuraiDeveloper>
     <PkgBower Condition=" '$(PkgBower)' == '' ">C:\Users\Stacy\.nuget\packages\bower\1.3.11</PkgBower>
   </PropertyGroup>
 </Project>

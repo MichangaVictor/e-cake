@@ -9,9 +9,8 @@ namespace BethanysPieShop.Models
 {
     public static class DbInitializer
     {
-        public static void Seed(IApplicationBuilder applicationBuilder)
+        public static void Seed(AppDbContext context)
         {
-            AppDbContext context = applicationBuilder.ApplicationServices.GetRequiredService<AppDbContext>();
 
             if (!context.Categories.Any())
             {

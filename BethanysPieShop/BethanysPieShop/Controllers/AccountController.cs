@@ -90,13 +90,13 @@ namespace BethanysPieShop.Controllers
             return View();
         }
 
-        [AllowAnonymous]
-        public IActionResult GoogleLogin(string returnUrl = null)
-        {
-            var redirectUrl = Url.Action("GoogleLoginCallback", "Account", new { ReturnUrl = returnUrl });
-            var properties = _signInManager.ConfigureExternalAuthenticationProperties(ExternalLoginServiceConstants.GoogleProvider, redirectUrl);
-            return Challenge(properties, ExternalLoginServiceConstants.GoogleProvider);
-        }
+        //[AllowAnonymous]
+        //public IActionResult GoogleLogin(string returnUrl = null)
+        //{
+        //    var redirectUrl = Url.Action("GoogleLoginCallback", "Account", new { ReturnUrl = returnUrl });
+        //    var properties = _signInManager.ConfigureExternalAuthenticationProperties(ExternalLoginServiceConstants.GoogleProvider, redirectUrl);
+        //    return Challenge(properties, ExternalLoginServiceConstants.GoogleProvider);
+        //}
 
         [AllowAnonymous]
         public async Task<IActionResult> GoogleLoginCallback(string returnUrl = null, string serviceError = null)

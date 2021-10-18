@@ -1,5 +1,5 @@
 ﻿using System;
-//using BethanysPieShop.Filters;
+using BethanysPieShop.Filters;
 using Microsoft.AspNetCore.Mvc;
 using BethanysPieShop.Models;
 using BethanysPieShop.Utility;
@@ -13,6 +13,7 @@ using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.Extensions.Caching.Memory;
 using System.Collections.Generic;
 using System.Linq;
+
 
 namespace BethanysPieShop.Controllers
 {
@@ -38,13 +39,14 @@ namespace BethanysPieShop.Controllers
         //[ResponseCache(Duration = 30, Location = ResponseCacheLocation.Client)]
         //[ResponseCache(Duration = 30, VaryByHeader = "User-Agent")]
         [ResponseCache(CacheProfileName = "Default")]
+        [Obsolete]
         public ViewResult Index()
         {
             //Serilog
             _logger.LogDebug("Loading home page");
-            
+
             //Application Insights
-            //TelemetryClient tc = new TelemetryClient();
+            TelemetryClient tc = new TelemetryClient();
             tc.TrackPageView(new PageViewTelemetry("Insights: Bethany's Home page loaded") { Timestamp = DateTime.UtcNow });
             tc.TrackEvent("HomeControllerLoad");
 

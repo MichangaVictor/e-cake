@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zZqF5yqfehvdfa/XiqJuZ3xEkRawKrWNYUIxbTunb/cekNuc+fIaK1RZ4bIWJ7aiRW7fmJGVy+wMO9uoeC0fnQ==",
+  "dgSpecHash": "IaixDbRWdaO6dana7NBw3QOOPUpd3+h0pkcJER9deYeOkpqw1PsTKi0C8a6KxThWAl7k2YN4TL7BuB7Pe+ozLw==",
   "success": true,
   "projectFilePath": "E:\\Active-work\\BethanysPieShop\\BethanysPieShop\\BethanysPieShop.Test\\BethanysPieShop.Test.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\Stacy\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\Stacy\\.nuget\\packages\\memuraideveloper\\2.0.3\\memuraideveloper.2.0.3.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\microsoft.applicationinsights\\2.18.0\\microsoft.applicationinsights.2.18.0.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\microsoft.applicationinsights.aspnetcore\\2.18.0\\microsoft.applicationinsights.aspnetcore.2.18.0.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\microsoft.applicationinsights.dependencycollector\\2.18.0\\microsoft.applicationinsights.dependencycollector.2.18.0.nupkg.sha512",
@@ -97,7 +98,7 @@
     "C:\\Users\\Stacy\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\moq\\4.16.1\\moq.4.16.1.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\Stacy\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\Stacy\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\node.js\\0.10.28\\node.js.0.10.28.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\nogit\\0.0.8\\nogit.0.0.8.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\npgsql\\5.0.10\\npgsql.5.0.10.nupkg.sha512",
@@ -121,6 +122,7 @@
     "C:\\Users\\Stacy\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\serilog\\2.10.0\\serilog.2.10.0.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\serilog.extensions.logging\\3.0.1\\serilog.extensions.logging.3.0.1.nupkg.sha512",
+    "C:\\Users\\Stacy\\.nuget\\packages\\serilog.sinks.file\\5.0.0\\serilog.sinks.file.5.0.0.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\Stacy\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
